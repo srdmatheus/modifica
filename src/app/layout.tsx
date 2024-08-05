@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 
 import "@/styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { fonts } from "../../public/fonts";
 
 export const metadata: Metadata = {
   title: "Converte Já",
@@ -13,9 +12,10 @@ export const metadata: Metadata = {
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  const fontVariables = fonts.map((font) => font.variable).join(" ");
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={`${fontVariables} font-sans`}>{children}</body>
     </html>
   );
 }
