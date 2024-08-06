@@ -9,7 +9,7 @@ import { Header } from "@/components/header";
 import { fonts } from "../../public/fonts";
 
 export const metadata: Metadata = {
-  title: "Converte Já",
+  title: "Modifica",
   description: "Converta e comprima seus arquivos de forma rápida e fácil."
 };
 
