@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@radix-ui/react-slot':
+    specifier: ^1.1.0
+    version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  lucide-react:
+    specifier: ^0.424.0
+    version: 0.424.0(react@18.3.1)
   next:
     specifier: 14.2.5
     version: 14.2.5(@babel/core@7.25.2)(react-dom@18.3.1)(react@18.3.1)
@@ -482,6 +488,33 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
+
+  /@radix-ui/react-compose-refs@1.1.0(@types/react@18.3.3)(react@18.3.1):
+    resolution: {integrity: sha512-b4inOtiaOnYf9KWyO3jAeeCG6FeyfY6ldiEPanbUjWd+xIk5wZeHa8yVwmrJ2vderhu/BQvzCrJI0lHd+wIiqw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.3.3
+      react: 18.3.1
+    dev: false
+
+  /@radix-ui/react-slot@1.1.0(@types/react@18.3.3)(react@18.3.1):
+    resolution: {integrity: sha512-FUCf5XMfmW4dtYl69pdS4DbxKy8nj4M7SafBgPllysxmdachynNflAdp/gCsnYWNDnge6tI9onzMp5ARYc1KNw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@types/react': 18.3.3
+      react: 18.3.1
+    dev: false
 
   /@rushstack/eslint-patch@1.10.4:
     resolution: {integrity: sha512-WJgX9nzTqknM393q1QJDJmoW28kUfEnybeTfVNcNAPnIx210RXm2DiXiHzfNPJNIUUb1tJnz/l4QGtJ30PgWmA==}
@@ -2368,6 +2401,14 @@ packages:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
     dependencies:
       yallist: 3.1.1
+
+  /lucide-react@0.424.0(react@18.3.1):
+    resolution: {integrity: sha512-x2Nj2aytk1iOyHqt4hKenfVlySq0rYxNeEf8hE0o+Yh0iE36Rqz0rkngVdv2uQtjZ70LAE73eeplhhptYt9x4Q==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
