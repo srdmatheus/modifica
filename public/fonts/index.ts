@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Poppins } from "next/font/google";
 
 export const poppins = Poppins({
   subsets: ["latin"],
@@ -6,4 +6,10 @@ export const poppins = Poppins({
   variable: "--font-poppins"
 });
 
-export const fonts = [poppins];
+export const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-bricolage"
+});
+
+export const fonts = [poppins, bricolage];

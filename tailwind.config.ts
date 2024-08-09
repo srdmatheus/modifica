@@ -27,7 +27,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-poppins)", ...fontFamily.sans]
+        sans: ["var(--font-poppins)", ...fontFamily.sans],
+        heading: ["var(--font-bricolage)", ...fontFamily.sans]
       }
     }
   },
