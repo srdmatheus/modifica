@@ -1,18 +1,15 @@
 import { create } from "zustand";
 
-interface FileStoreState {
+type FileStore = {
   files: File[];
-  addFiles: (newFiles: File[]) => void;
+  addFiles: (files: File[]) => void;
   removeFile: (fileName: string) => void;
   clearFiles: () => void;
-}
+};
 
-export const useFileStore = create<FileStoreState>((set) => ({
+export const useFileStore = create<FileStore>((set) => ({
   files: [],
-  addFiles: (newFiles) =>
-    set((state) => ({
-      files: [...state.files, ...newFiles]
-    })),
+  addFiles: (files) => set((state) => ({ files: [...state.files, ...files] })),
   removeFile: (fileName) =>
     set((state) => ({
       files: state.files.filter((file) => file.name !== fileName)
