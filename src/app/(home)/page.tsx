@@ -1,4 +1,4 @@
-import { FileHandler } from "@/components/conversion/file-handler";
+import { FileHandler } from "./components/conversion-handler";
 
 export default function Home() {
   return (
