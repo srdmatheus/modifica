@@ -7,12 +7,12 @@ import { convertFile } from "@/utils/convert-file";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { toBlobURL } from "@ffmpeg/util";
 
-import { Button } from "../ui/button";
-import { Icon } from "../ui/icon";
-import { ConversionStatus } from "./conversion-status";
-import { FileActions } from "./file-actions";
+import { FileActions } from "../../../components/app/file-actions";
+import { FileDetails } from "../../../components/app/file-details";
+import { Status } from "../../../components/app/status";
+import { Button } from "../../../components/ui/button";
+import { Icon } from "../../../components/ui/icon";
 import { FileConverterSkeleton } from "./file-converter-skeleton";
-import { FileDetails } from "./file-details";
 import { FormatSelector } from "./format-selector";
 
 export const FileConverter = () => {
@@ -68,6 +68,13 @@ export const FileConverter = () => {
     setIsDone(true);
   };
 
+  const downloadUnique = (file: { url: string; name: string }) => {
+    const a = document.createElement("a");
+    a.href = file.url;
+    a.download = file.name;
+    a.click();
+  };
+
   const downloadAll = () => {
     outputFiles.forEach((file) => {
       const a = document.createElement("a");
@@ -79,7 +86,7 @@ export const FileConverter = () => {
 
   const formatsIsNotSelected = Object.keys(formats).length < files.length;
 
-  const removeUniqueFile = (fileName: string) => {
+  const handleRemoveByName = (fileName: string) => {
     removeFile(fileName);
     if (files.length === 1) {
       reset();
@@ -104,7 +111,7 @@ export const FileConverter = () => {
         >
           <FileDetails name={file.name} type={file.type} size={file.size} />
           <div className="flex space-x-96">
-            <ConversionStatus isConverting={isConverting} isDone={isDone} />
+            <Status isProcessing={isConverting} isDone={isDone} />
 
             {!isConverting && !isDone && (
               <FormatSelector
@@ -115,8 +122,9 @@ export const FileConverter = () => {
             )}
 
             <FileActions
-              outputFile={outputFiles[index]}
-              onRemoveFile={() => removeUniqueFile(file.name)}
+              hasDownload={outputFiles.length >= 1}
+              onDownloadFile={() => downloadUnique(outputFiles[index])}
+              onRemoveFile={() => handleRemoveByName(file.name)}
             />
           </div>
         </div>

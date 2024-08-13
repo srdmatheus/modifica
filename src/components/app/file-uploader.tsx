@@ -1,5 +1,6 @@
 "use client";
 
+import { useFileCompressStore } from "@/stores/fileCompressStore";
 import { useFileStore } from "@/stores/fileStore";
 import ReactDropzone from "react-dropzone";
 
@@ -8,16 +9,25 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/icon";
 
 type FileUploaderProps = {
+  toStore?: "fileStore" | "compressStore";
   className?: string;
 };
 
-export const FileUploader = ({ className }: FileUploaderProps) => {
-  const { addFiles } = useFileStore();
+export const FileUploader = ({
+  className,
+  toStore = "fileStore"
+}: FileUploaderProps) => {
+  const addFileStore = useFileStore((state) => state.addFiles);
+  const addCompressFileStore = useFileCompressStore((state) => state.addFiles);
 
   const onDrop = (acceptedFiles: File[]) => {
-    console.log("Files dropped:", acceptedFiles);
+    if (toStore === "fileStore") {
+      addFileStore(acceptedFiles);
+    }
 
-    addFiles(acceptedFiles);
+    if (toStore === "compressStore") {
+      addCompressFileStore(acceptedFiles);
+    }
   };
 
   return (

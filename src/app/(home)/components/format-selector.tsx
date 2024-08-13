@@ -1,4 +1,4 @@
-import { Select } from "../ui/select";
+import { Select } from "../../../components/ui/select";
 
 type FormatSelectorProps = {
   format: string;
