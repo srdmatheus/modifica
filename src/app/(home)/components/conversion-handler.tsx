@@ -2,8 +2,9 @@
 
 import { useFileStore } from "@/stores/fileStore";
 
+import { FileUploader } from "@/components/app/file-uploader";
+
 import { FileConverter } from "./file-converter";
-import { FileUploader } from "./file-uploader";
 
 export const FileHandler = () => {
   const { files } = useFileStore();

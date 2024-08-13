@@ -3,23 +3,28 @@ import { Icon } from "@/components/ui/icon";
 
 type FileActionProps = {
   onRemoveFile: () => void;
-  outputFile: { url: string; name: string } | undefined;
+  onDownloadFile: () => void;
+  hasDownload: boolean;
 };
 
-export const FileActions = ({ onRemoveFile, outputFile }: FileActionProps) => (
+export const FileActions = ({
+  onRemoveFile,
+  onDownloadFile,
+  hasDownload
+}: FileActionProps) => (
   <div className="flex items-center gap-2">
-    {outputFile ? (
+    {hasDownload ? (
       <Button
-        asChild
+        title="Baixar arquivo"
+        onClick={onDownloadFile}
         className="transitional-all flex items-center justify-center rounded-2xl bg-transparent p-2.5 text-foreground transition-all hover:bg-foreground-muted/10"
       >
-        <a href={outputFile.url} download={outputFile.name}>
-          <span className="sr-only">Baixar arquivo</span>
-          <Icon.download className="size-5" />
-        </a>
+        <span className="sr-only">Baixar arquivo</span>
+        <Icon.download className="size-5" />
       </Button>
     ) : (
       <Button
+        title="Excluir arquivo"
         onClick={onRemoveFile}
         className="transitional-all flex items-center justify-center rounded-2xl bg-transparent p-2.5 text-foreground transition-all hover:bg-foreground-muted/10"
       >

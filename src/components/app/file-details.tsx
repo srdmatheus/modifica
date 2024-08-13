@@ -1,7 +1,7 @@
 import { compressFileName } from "@/utils/compress-filename";
 import { formatFileSize } from "@/utils/format-file-size";
 
-import { FileIcon } from "./file-icon";
+import { FileIcon } from "../../app/(home)/components/file-icon";
 
 type FileDetailsProps = {
   name: string;
