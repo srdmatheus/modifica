@@ -1,4 +1,4 @@
-![compress](https://github.com/user-attachments/assets/e11d72b1-66bf-48ea-9153-4961bd24388c)![modifica-banner](https://github.com/user-attachments/assets/0953a1e7-a937-42a8-913a-b00193bb7e03)
+![modifica-banner](https://github.com/user-attachments/assets/0953a1e7-a937-42a8-913a-b00193bb7e03)
 
 # Modifica | Conversor e Compressor de Imagens
 
