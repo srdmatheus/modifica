@@ -2,12 +2,13 @@ import imageCompression, { Options } from "browser-image-compression";
 
 type CompressFileProps = {
   file: File;
-  maxSizeMB: number;
 };
 
-export const compressFile = async ({ file, maxSizeMB }: CompressFileProps) => {
+export const compressFile = async ({ file }: CompressFileProps) => {
   const options: Options = {
-    maxSizeMB
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true
   };
 
   try {

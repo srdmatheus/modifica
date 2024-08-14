@@ -14,17 +14,15 @@ export const FileCompress = () => {
   const [compressedFiles, setCompressedFiles] = useState<File[]>([]);
   const [isCompressing, setIsCompressing] = useState(false);
   const [isDone, setIsDone] = useState(false);
-  const [maxSizeMB, setMaxSizeMB] = useState<number[]>([]);
 
   const { files, removeFile, clearFiles } = useFileCompressStore();
 
   const handleCompress = async () => {
     setIsCompressing(true);
     const outputFiles = await Promise.all(
-      files.map(async (file, index) => {
+      files.map(async (file) => {
         return await compressFile({
-          file,
-          maxSizeMB: maxSizeMB[index]
+          file
         });
       })
     );
@@ -45,7 +43,16 @@ export const FileCompress = () => {
     document.body.removeChild(link);
   };
 
-  const downloadAll = () => {};
+  const downloadAll = () => {
+    compressedFiles.forEach((file) => {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(file);
+      link.download = file.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  };
 
   const handleRemoveFileByName = (name: string) => {
     if (files.length === 1) {
@@ -70,32 +77,6 @@ export const FileCompress = () => {
         >
           <FileDetails name={name} type={type} size={size} />
 
-          {!isCompressing && !isDone && (
-            <div className="flex items-center justify-center gap-2">
-              <label
-                htmlFor="maxsize"
-                className="text-sm text-foreground-muted"
-              >
-                Tamanho máximo (MB):{" "}
-              </label>
-              <input
-                id="maxsize"
-                className="outer h-8 w-20 rounded-xl border text-center"
-                min={1}
-                max={50}
-                type="number"
-                value={maxSizeMB[index] || "1"}
-                onChange={(e) => {
-                  const newSizeMB = Number(e.target.value);
-                  setMaxSizeMB((prev) => {
-                    const updatedSizes = [...prev];
-                    updatedSizes[index] = newSizeMB;
-                    return updatedSizes;
-                  });
-                }}
-              />
-            </div>
-          )}
           <Status isProcessing={isCompressing} isDone={isDone} />
 
           <FileActions
