@@ -73,9 +73,11 @@ export const FileCompress = () => {
       {files.map(({ name, size, type }, index) => (
         <div
           key={name}
-          className="flex w-full items-center justify-between rounded-2xl border p-6"
+          className="flex w-full grid-cols-3 justify-between rounded-2xl border p-6"
         >
-          <FileDetails name={name} type={type} size={size} />
+          <div className="flex w-1/2 items-center">
+            <FileDetails name={name} type={type} size={size} />
+          </div>
 
           <Status isProcessing={isCompressing} isDone={isDone} />
 
@@ -108,7 +110,7 @@ export const FileCompress = () => {
           {isCompressing ? (
             <Icon.loading className="size-4 animate-spin" />
           ) : (
-            "Converter agora"
+            "Comprimir agora"
           )}
         </Button>
       )}
