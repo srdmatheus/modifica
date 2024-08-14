@@ -16,7 +16,12 @@ Converta suas imagens para vários formatos populares, como PNG, JPEG, GIF, BMP,
 
 Reduza o tamanho das suas imagens.
 
-![compress](https://github.com/user-attachments/assets/b5069a99-8a7a-4613-9230-5a7f5339b259)
+![compress](https://github.com/user-attachments/assets/e6522650-6af4-429e-b442-bf3cab96fdbc)
+
+Exemplo utilizado:
+| Antes | Depois |
+| ----------- | ----------- |
+| 45,8 MB | 953 KB |
 
 ### 3. Processamento Local
 
